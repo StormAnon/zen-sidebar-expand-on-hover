@@ -62,7 +62,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
 
       /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
-      &:has(#theme-Zen-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="fancy"]) {
+      &:has(#theme-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="fancy"]) {
         #zen-media-controls-toolbar, #zen-appcontent-wrapper,
         vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
@@ -92,7 +92,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
       }
 
-      &:has(#theme-Zen-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="balanced"]) {
+      &:has(#theme-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="balanced"]) {
         #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
         vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
@@ -121,7 +121,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
       }
 
-      &:has(#theme-Zen-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="potato"]) {
+      &:has(#theme-Auto-Expand-Sidebar[mod-autoexpand-performance-mode="potato"]) {
         #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
         vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
