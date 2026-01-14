@@ -661,6 +661,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         .tab-close-button {
           opacity: 100% !important;
+          transform: translateX(3px) !important;
+        }
+        &:hover{
+          .tab-close-button {
+            transform: translateX(0px) !important;
+          }
         }
       }
       .tabbrowser-tab:hover{
