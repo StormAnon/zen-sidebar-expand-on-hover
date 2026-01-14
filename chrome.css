@@ -506,7 +506,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         }
         #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
-        padding-left: 25px !important;
+        padding-left: 70px !important;
         }
       }
 
