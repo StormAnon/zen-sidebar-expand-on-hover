@@ -500,11 +500,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       /*adds relief for window buttons on a right-sided tab bar, and for the back button on the left tab bar*/
       @media not all and (-moz-bool-pref: "zen.view.use-single-toolbar") {
-        #zen-main-app-wrapper[zen-compact-mode="false"]{
+        /*#zen-main-app-wrapper[zen-compact-mode="false"]{*/
         #navigator-toolbox[zen-right-side="true"] ~ #zen-appcontent-wrapper #nav-bar{
-        padding-right: 100px !important;
+        padding-right: 80px !important;
+        padding-left: 30px !important;
         }
-        }
+        /*}*/
         #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
         padding-left: 70px !important;
         }
