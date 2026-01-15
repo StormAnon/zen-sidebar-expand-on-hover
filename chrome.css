@@ -68,7 +68,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
         .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button,
-        .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
         .tab-group-label, #zen-sidebar-top-buttons-customization-target > *,
         .tab-group-container{
           transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
@@ -98,7 +98,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
         .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
-        .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
         .tab-group-label, #zen-sidebar-top-buttons-customization-target > *,
         .tab-group-container{
           transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
@@ -127,7 +127,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
         .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
-        .vertical-pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
         .tab-group-label, #zen-sidebar-top-buttons-customization-target > *, tab:is([zen-essential]),
         #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, .tab-group-container{
         transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
@@ -266,11 +266,8 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           //width: 100%;
           //transition: width 0ms ease-in-out var(--transition-delay) !important;
         }
-        .vertical-pinned-tabs-container-separator{
+        .pinned-tabs-container-separator{
           width: inherit !important;
-          margin-inline: inherit !important;
-          display: block !important;
-          justify-self: inherit !important;
         }
         .zen-current-workspace-indicator .zen-current-workspace-indicator-name{
           opacity: 100% !important;
@@ -592,11 +589,8 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
 
       /*collapses the thin line separator*/
-      .vertical-pinned-tabs-container-separator{
+      .pinned-tabs-container-separator{
         width: calc(var(--collapsed-tab-bar-width) - 6px) !important;
-        margin-inline: 0px !important;
-        display: flex !important;
-        justify-self: start !important;
       }
 
       /*Positions back button to the left (sane layout)*/
