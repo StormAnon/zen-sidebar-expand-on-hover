@@ -470,6 +470,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #zen-toggle-compact-mode{
         transform: scaleY(0.9);
         }
+        /*#zen-toggle-compact-mode{
+         *                  justify-content: flex-end !important;
+         *                  position: absolute;
+         *                  right: 0 !important;
+        }*/
         }
         }
       }
@@ -598,7 +603,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       [flash-popup],
       :has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open])
       )) {
-        #zen-sidebar-top-buttons-customization-target > *:not(#back-button){
+        #zen-sidebar-top-buttons-customization-target > *:not(#back-button, #zen-toggle-compact-mode){
         opacity: 0 !important;
         }
       }
