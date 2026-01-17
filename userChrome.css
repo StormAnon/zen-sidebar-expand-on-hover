@@ -348,8 +348,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
       }
       #navigator-toolbox:not([zen-right-side="true"]){
-      .zen-workspace-normal-tabs-section, .zen-workspace-pinned-tabs-section{
+      .zen-workspace-normal-tabs-section, .zen-workspace-pinned-tabs-section > *:not(.pinned-tabs-container-separator){
         padding-left: calc((var(--collapsed-tab-bar-width) - 36px)/2) !important;
+      }
+      .zen-workspace-pinned-tabs-section{
+        padding-left: 0 !important;
       }
       tab:not([zen-essential]) .tab-icon-image{
         margin-right: 9px !important;
@@ -558,7 +561,8 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
       /*collapses the thin line separator*/
       .pinned-tabs-container-separator{
-        width: calc(var(--collapsed-tab-bar-width) - 6px) !important;
+        width: calc(var(--collapsed-tab-bar-width) - 0px) !important;
+        padding-left: 4px !important;
         //margin-inline: 0px !important;
         //display: flex !important;
         //justify-self: start !important;
