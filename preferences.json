@@ -1,6 +1,6 @@
 [
     {
-      "property": "mod-autoexpand-performance-mode",
+      "property": "mod.autoexpand.performance_mode",
       "label": "Performance Setting",
       "type": "dropdown",
       "defaultValue": "balanced",
