@@ -126,7 +126,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       --hover-width: 100px;
 
       /*Expanded state. Activates on hover, popup menu, etc*/
-      &:is(:hover, [has-popup-menu=""], [movingtab], [flash-popup]), &:has(toolbarbutton[open="true"]:not(#zen-sidepanel-button), #urlbar[open]) {
+      &:is(:hover, [has-popup-menu="true"], [movingtab], [flash-popup]), &:has(#urlbar[open], toolbarbutton[open="true"]:not(#zen-sidepanel-button)) {
         --transition-delay-smooth: calc(var(--transition-delay) + 0ms);
         --transition-delay-fast: var(--transition-delay);
         ~ #zen-appcontent-wrapper{
