@@ -56,29 +56,88 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
 
       /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
-      #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
-      vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
-      #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
-      .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
-      tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
-      .pinned-tabs-container-separator, .zen-current-workspace-indicator-name, #zen-workspaces-button,
-      .tab-group-label, #zen-sidebar-top-buttons-customization-target > *, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
-      .tab-group-container{
+      @media (-moz-pref("mod.autoexpand.performance_mode", "fancy")) {
+        #zen-media-controls-toolbar, #zen-appcontent-wrapper,
+        vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
+        #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
+        .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
+        tab:not([zen-essential]) .tab-background, #tabs-newtab-button,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
+        .tab-group-label, #zen-sidebar-top-buttons-customization-target > *,
+        .tab-group-container{
+          transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
+          transform 0ms ease-in-out var(--transition-delay-fast),
+          opacity 0ms ease-in-out var(--transition-delay-fast),
+          width 0ms ease-in-out var(--transition-delay-fast),
+          max-height 0ms ease var(--transition-delay-fast),
+          z-index 0ms ease var(--transition-delay-fast) !important;
+        }
+
+        /*Elements with smooth transitions that are animated*/
+        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
+        #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
+        .tab-label-container, #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button),
+        .tab-group-container{
+          transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+          transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+          opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+          width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+          max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+        }
+      }
+
+      @media (-moz-pref("mod.autoexpand.performance_mode", "balanced")) {
+        #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
+        vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
+        #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
+        .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
+        tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name, #zen-workspaces-button, .tab-group-label,
+        #zen-sidebar-top-buttons-customization-target > *, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
+        .tab-group-container{
+          transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
+          transform 0ms ease-in-out var(--transition-delay-fast),
+          opacity 0ms ease-in-out var(--transition-delay-fast),
+          width 0ms ease-in-out var(--transition-delay-fast),
+          max-height 0ms ease var(--transition-delay-fast),
+          z-index 0ms ease var(--transition-delay-fast) !important;
+        }
+
+        /*Elements with smooth transitions that are animated*/
+        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]), .tab-group-container{
+        transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+        }
+      }
+
+      @media (-moz-pref("mod.autoexpand.performance_mode", "potato")) {
+        #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button), #zen-media-controls-toolbar, #zen-appcontent-wrapper,
+        vbox.zen-workspace-tabs-section.zen-workspace-pinned-tabs-section,
+        #nav-bar, #tabs-newtab-button .toolbarbutton-text, tab:not([zen-essential]):not([pinned])[selected="true"] .tab-background,
+        .tab-audio-button, #zen-media-controls-hbox > *:not(#zen-media-focus-button), #zen-media-main-vbox > *:not(#zen-media-controls-hbox),
+        tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
+        .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
+        .tab-group-label, #zen-sidebar-top-buttons-customization-target > *, tab:is([zen-essential]),
+        #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, .tab-group-container{
         transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
         transform 0ms ease-in-out var(--transition-delay-fast),
         opacity 0ms ease-in-out var(--transition-delay-fast),
         width 0ms ease-in-out var(--transition-delay-fast),
         max-height 0ms ease var(--transition-delay-fast),
         z-index 0ms ease var(--transition-delay-fast) !important;
-      }
+        }
 
-      /*Elements with smooth transitions that are animated*/
-      #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]), .tab-group-container{
-      transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
-      max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+        /*Elements with smooth transitions that are animated*/
+        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]){
+        transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+        }
       }
 
       #navigator-toolbox:has(#urlbar[open]){
