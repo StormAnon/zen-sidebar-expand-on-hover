@@ -560,12 +560,6 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         .tab-close-button {
           opacity: 100% !important;
-          transform: translateX(7px) !important;
-        }
-        &:hover{
-          .tab-close-button {
-            transform: translateX(4px) !important;
-          }
         }
       }
       .tabbrowser-tab:hover{
@@ -584,7 +578,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         left: 0;
         display: flex !important;
         opacity: 0% !important;
-        transform: translateX(4px) !important;
+        margin-left: 4px !important;
       }
       &:hover .tabbrowser-tab:not([zen-essential]) .tab-close-button{
         clip-path: inset(0 0 0 0);
@@ -681,9 +675,10 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           opacity: 0% !important;
           clip-path: inset(100% 0 0 0);
           transition: clip-path 0ms ease-in-out var(--transition-delay-after) !important;
+          margin-right: 2px !important;
         }
         &:hover .tab-close-button{
-          transform: translateX(2px) !important;
+          //transform: translateX(2px) !important;
           position: relative !important;
           opacity: 100% !important;
         }
