@@ -190,6 +190,9 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         &[zen-right-side="true"] ~ #zen-appcontent-wrapper #tabbrowser-tabbox {
           clip-path: inset(-2px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) -2px -2px round 10px);
         }
+        &[zen-right-side="true"] ~ #zen-appcontent-wrapper #tabbrowser-tabbox[zen-split-view="true"] #tabbrowser-tabpanels {
+          clip-path: inset(-2px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) + 4px) -2px -2px round 10px);
+        }
         tab:not([zen-essential]) .tab-background{
           width: calc(var(--expanded-tab-bar-width) - 14px) !important;
         }
