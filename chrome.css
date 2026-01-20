@@ -336,7 +336,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
 
       /*Collapses tab for square backgrounds on hover, during collapsed state*/
-      tab:not([zen-essential], [split-view="true"])[selected="true"] .tab-background{
+      tab:not([zen-essential], [split-view="true"]) .tab-background{
         width: 36px !important;
       }
 
