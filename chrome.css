@@ -43,7 +43,6 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       @media (-moz-bool-pref: "mod.autoexpand.essential_align") {
         #navigator-toolbox:not([zen-has-hover]) tab:is([zen-essential], [pinned]):is([selected]){
         order: -1;
-        //grid-column: 1 !important;
         }
       }
 
@@ -64,7 +63,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button,
         .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
         .tab-group-label, #zen-sidebar-top-buttons-customization-target > *,
-        .tab-group-container{
+        .tab-group-container, tab-group{
           transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
           transform 0ms ease-in-out var(--transition-delay-fast),
           opacity 0ms ease-in-out var(--transition-delay-fast),
@@ -94,7 +93,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
         .pinned-tabs-container-separator, .zen-current-workspace-indicator-name, #zen-workspaces-button, .tab-group-label,
         #zen-sidebar-top-buttons-customization-target > *, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
-        .tab-group-container{
+        .tab-group-container, tab-group{
           transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
           transform 0ms ease-in-out var(--transition-delay-fast),
           opacity 0ms ease-in-out var(--transition-delay-fast),
@@ -121,7 +120,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         tab:not([zen-essential]) .tab-background, #tabs-newtab-button, .tab-label-container,
         .pinned-tabs-container-separator, .zen-current-workspace-indicator-name,
         .tab-group-label, #zen-sidebar-top-buttons-customization-target > *, tab:is([zen-essential]),
-        #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, .tab-group-container{
+        #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after, .tab-group-container, tab-group{
         transition: clip-path 0ms ease-in-out var(--transition-delay-fast),
         transform 0ms ease-in-out var(--transition-delay-fast),
         opacity 0ms ease-in-out var(--transition-delay-fast),
@@ -262,6 +261,9 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
             }
           }
         }
+        tab-group {
+          clip-path: inset(0 0 0 0);
+        }
       }
       }
 
@@ -333,15 +335,28 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
 
 
+      /*Collapses tab for square backgrounds on hover, during collapsed state*/
+      tab:not([zen-essential], [split-view="true"]) .tab-background{
+        width: 36px !important;
+      }
+
+      /*Collapses split view tab group for square backgrounds on hover, during collapsed state*/
+      @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        tab-group {
+          clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 3px) 0px 0px round 10px);
+        }
+      }
+      @media (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        tab-group {
+          clip-path: inset(0px 0px 0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 3px) round 10px);
+        }
+      }
 
       /* CENTER FAVICONS on collapsed state */
       tab:not([zen-essential]){ /*, [pinned]){  //superpins*/
         .tab-icon-image{
           margin-left: 4px !important;
           margin-right: 4px !important;
-        }
-        .tab-background{
-          width: 36px !important;
         }
       }
       #navigator-toolbox:not([zen-right-side="true"]){
@@ -532,11 +547,6 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       }
 
-      /*Collapses tab for square backgrounds on hover, during collapsed state*/
-      tab:not([zen-essential]) .tab-background{
-        width: 37px;
-      }
-
       /*collapses the thin line separator*/
       .pinned-tabs-container-separator{
         width: calc(var(--collapsed-tab-bar-width) - 0px) !important;
@@ -613,6 +623,14 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           opacity: 100% !important;
         }
         &:not([selected="true"]) .tab-label {
+          transform: translateX(19px) !important;
+        }
+      }
+      tab-group:is(:hover, [hasactivetab=""]) {
+        .tab-close-button{
+          opacity: 100% !important;
+        }
+        .tab-label{
           transform: translateX(19px) !important;
         }
       }
@@ -734,6 +752,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         &[pinned]:not([pending="true"]) .tab-close-button{
           display: none !important;
+        }
+      }
+      tab-group:is(:hover, [hasactivetab=""]) {
+        .tab-close-button{
+          position: relative !important;
+          opacity: 100% !important;
         }
       }
       }
