@@ -570,6 +570,14 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           transform: translateX(19px) !important;
         }
       }
+      tab-group:is(:hover, [hasactivetab=""]) {
+        .tab-close-button{
+          opacity: 100% !important;
+        }
+        .tab-label{
+          transform: translateX(19px) !important;
+        }
+      }
       tab .tab-close-button{
         clip-path: inset(100% 0 0 0);
         transition: clip-path 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)),
@@ -688,6 +696,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         &[pinned]:not([pending="true"]) .tab-close-button{
           display: none !important;
+        }
+      }
+      tab-group:is(:hover, [hasactivetab=""]) {
+        .tab-close-button{
+          position: relative !important;
+          opacity: 100% !important;
         }
       }
       }
