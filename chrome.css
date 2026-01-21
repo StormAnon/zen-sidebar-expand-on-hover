@@ -76,7 +76,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
         #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
         .tab-label-container, #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button),
-        .tab-group-container{
+        .tab-group-container, #tabbrowser-tabpanels{
           transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
           transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
           opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -103,7 +103,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*Elements with smooth transitions that are animated*/
-        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]), .tab-group-container{
+        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]), .tab-group-container, #tabbrowser-tabpanels{
         transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -130,7 +130,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*Elements with smooth transitions that are animated*/
-        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]){
+        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), #tabbrowser-tabpanels{
         transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -302,6 +302,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       /*initial clip path state*/
       #tabbrowser-tabbox {
       clip-path: inset(-2px -2px -2px -2px round 5px);
+      }
+
+      @media (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        #zen-appcontent-wrapper #tabbrowser-tabbox[zen-split-view="true"] #tabbrowser-tabpanels {
+        clip-path: inset(-2px -2px -2px -2px round 5px);
+        }
       }
 
       /*Adds space for the tab icons*/
