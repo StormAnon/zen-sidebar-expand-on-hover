@@ -493,17 +493,19 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*makes nav buttons clickable on left sided sidebar*/
-        #zen-main-app-wrapper:not([zen-compact-mode="true"]){
-        #navigator-toolbox:not([zen-right-side="true"]){
-        transform: translateY(30px);
-        padding-bottom: 35px !important;
-        #zen-sidebar-top-buttons{
-        min-height: 25px !important;
-        }
-        #zen-toggle-compact-mode{
-        transform: scaleY(0.9);
-        }
-        }
+        @media not (-moz-bool-pref: "zen.view.compact.enable-at-startup"){
+          @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+            #navigator-toolbox{
+            transform: translateY(30px);
+            padding-bottom: 35px !important;
+            #zen-sidebar-top-buttons{
+            min-height: 25px !important;
+            }
+            #zen-toggle-compact-mode{
+            transform: scaleY(0.9);
+            }
+            }
+          }
         }
       }
 
