@@ -488,22 +488,31 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         margin-inline-start: auto;
         }
         /*}*/
-        #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
-        padding-left: 0px !important;
+        @media not (-moz-platform: macos) {
+          #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
+          padding-left: 0px !important;
+          }
+        }
+        @media (-moz-platform: macos) {
+          #navigator-toolbox:not([zen-right-side="true"]) ~ #zen-appcontent-wrapper #nav-bar{
+          padding-left: 30px !important;
+          }
         }
 
         /*makes nav buttons clickable on left sided sidebar*/
-        @media not (-moz-bool-pref: "zen.view.compact.enable-at-startup"){
-          @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
-            #navigator-toolbox{
-            transform: translateY(30px);
-            padding-bottom: 35px !important;
-            #zen-sidebar-top-buttons{
-            min-height: 25px !important;
-            }
-            #zen-toggle-compact-mode{
-            transform: scaleY(0.9);
-            }
+        @media not (-moz-platform: macos) {
+          @media not (-moz-bool-pref: "zen.view.compact.enable-at-startup"){
+            @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+              #navigator-toolbox{
+              transform: translateY(30px);
+              padding-bottom: 35px !important;
+              #zen-sidebar-top-buttons{
+              min-height: 25px !important;
+              }
+              #zen-toggle-compact-mode{
+              transform: scaleY(0.9);
+              }
+              }
             }
           }
         }
