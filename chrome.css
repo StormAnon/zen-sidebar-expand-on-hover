@@ -35,23 +35,23 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
 
       /*Option to verticalize essentials and collapses essentials when not hovered*/
+      tab:is([zen-essential]){
+        width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
+      }
+      @media (-moz-bool-pref: "mod.autoexpand.essentials_vertical") {
+        .zen-essentials-container {
+          grid-template-columns: 1fr !important;
+          max-height: 175px;
+          overflow-y: auto !important;
+          min-width: 10px !important;
+          //width: calc(var(--expanded-tab-bar-width) - 0px) !important;
+        }
         tab:is([zen-essential]){
-          width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
-        }
-        @media (-moz-bool-pref: "mod.autoexpand.essentials_vertical") {
-          .zen-essentials-container {
-            grid-template-columns: 1fr !important;
-            max-height: 175px;
-            overflow-y: auto !important;
-            min-width: 10px !important;
-            //width: calc(var(--expanded-tab-bar-width) - 0px) !important;
-          }
-          tab:is([zen-essential]){
-            .tab-background{
-              min-height: 35px !important;
-            }
+          .tab-background{
+            min-height: 35px !important;
           }
         }
+      }
 
       /*fades sleeping tabs*/
       @media (-moz-bool-pref: "mod.autoexpand.fade_sleeping_tabs") {
@@ -66,6 +66,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         .pinned-tabs-container-separator{
           display: none !important;
         }
+      }
+
+      /*Necessary to prevent the mouse from unhovering while still in the sidebar*/
+      #navigator-toolbox:hover {
+      -moz-window-dragging: no-drag; /* Disables window dragging */
       }
 
       /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
