@@ -41,7 +41,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       @media (-moz-bool-pref: "mod.autoexpand.essentials_vertical") {
         .zen-essentials-container {
           grid-template-columns: 1fr !important;
-          max-height: 180px;
+          max-height: 175px;
           overflow-y: auto !important;
           min-width: 10px !important;
           //width: calc(var(--expanded-tab-bar-width) - 0px) !important;
