@@ -410,6 +410,21 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       }
 
+      /*centers glance tab*/
+      @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        .tabbrowser-tab[zen-glance-tab="true"] .tab-icon-stack{
+          transform: translateX(-4px);
+        }
+      }
+      @media (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        .tabbrowser-tab[zen-glance-tab="true"] .tab-icon-stack{
+          transform: translateX(4px);
+        }
+        .tabbrowser-tab[zen-glance-tab="true"]{
+          transform: translateX(-6px);
+        }
+      }
+
       /*Centers newtab button plus symbol on collapsed bar*/
       #tabs-newtab-button .toolbarbutton-text{
       position: relative !important;
@@ -676,7 +691,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           opacity: 100% !important;
         }
       }
-      .tabbrowser-tab:hover{
+      .tabbrowser-tab:hover:not([glance-id]){
         .tab-close-button {
           opacity: 100% !important;
         }
@@ -692,7 +707,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           transform: translateX(19px) !important;
         }
       }
-      tab .tab-close-button{
+      tab:not([glance-id]) .tab-close-button{
         clip-path: inset(100% 0 0 0);
         transition: clip-path 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)),
         opacity 150ms ease-in-out !important;
