@@ -34,12 +34,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
       }
 
-      /*Necessary to prevent the mouse from unhovering while still in the sidebar*/
-      #navigator-toolbox:hover {
-      -moz-window-dragging: no-drag; /* Disables window dragging */
-      }
-
-      /*collapses essentials when not hovered*/
+      /*Option to verticalize essentials and collapses essentials when not hovered*/
         tab:is([zen-essential]){
           width: calc(var(--collapsed-tab-bar-width) - 5px) !important;
         }
@@ -467,7 +462,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       max-height: 0;
       }
 
-      /*removes player buttons escept favicon*/
+      /*removes player buttons except favicon*/
       #zen-media-controls-hbox > *:not(#zen-media-focus-button) {
       overflow: hidden;
       max-height: 0;
@@ -481,7 +476,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       /*Ensures that the mediaplayer has the correct height*/
       #zen-media-focus-button{
       display: flex !important;
-      transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - 25px));
+      transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - 24px));
       }
 
       /*fades audio button*/
@@ -558,7 +553,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
       /*Resizes media control toolbar in the collapsed state*/
       #zen-media-controls-toolbar{
-      width: calc(var(--collapsed-tab-bar-width) - 7px);
+      width: calc(var(--collapsed-tab-bar-width) - 6px);
       }
 
       /*fades tab text*/
@@ -588,11 +583,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       }
       #navigator-toolbox:not([zen-right-side="true"]) #zen-workspaces-button {
-      transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 0px));
+      transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - var(--expanded-tab-bar-width)/2 + 2px));
       }
       #navigator-toolbox[zen-right-side="true"] {
       #zen-workspaces-button {
-      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 0px));
+      transform: translateX(calc(var(--expanded-tab-bar-width)/2 - var(--collapsed-tab-bar-width)/2 - 2px));
       }
       #downloads-button{
       order: 999 !important;
