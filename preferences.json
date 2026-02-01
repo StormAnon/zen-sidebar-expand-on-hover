@@ -33,9 +33,9 @@
     },
     {
         "property": "mod.autoexpand.animation_duration",
-        "label": "Expanding animation duration, in ms (default: 150ms)",
+        "label": "Expanding animation duration, in ms (default: 200ms)",
         "type": "string",
-        "defaultValue": "150ms"
+        "defaultValue": "200ms"
     },
     {
         "property": "mod.autoexpand.animation_delay",
