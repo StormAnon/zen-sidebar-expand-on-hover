@@ -6,7 +6,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
     :root:not([sizemode="fullscreen"]){
 
-      --transition-duration: 150ms;
+      --transition-duration: 200ms;
       --transition-delay: 0ms;
       --transition-delay-after: 100ms;
       --expanded-tab-bar-width-a: 250px;
@@ -24,12 +24,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         display: none !important;
       }
 
-      /*Necessary to prevent the mouse from unhovering while still in the sidebar*/
-      #navigator-toolbox:hover {
-      -moz-window-dragging: no-drag; /* Disables window dragging */
-      }
-
-      /*Moves selected essential tab to the first position, ensuring it's visible*/
+      /*Option to verticalize essentials and collapses essentials when not hovered*/
       #navigator-toolbox:not([zen-has-hover]) tab:is([zen-essential], [pinned]):is([selected]){
       //order: -1; // Move it to the front without breaking layout
       //grid-column: 1 !important;
@@ -347,6 +342,21 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       }
 
+      /*centers glance tab*/
+      @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        .tabbrowser-tab[zen-glance-tab="true"] .tab-icon-stack{
+          transform: translateX(-4px);
+        }
+      }
+      @media (-moz-bool-pref: "zen.tabs.vertical.right-side"){
+        .tabbrowser-tab[zen-glance-tab="true"] .tab-icon-stack{
+          transform: translateX(4px);
+        }
+        .tabbrowser-tab[zen-glance-tab="true"]{
+          transform: translateX(-6px);
+        }
+      }
+
       /*Centers newtab button plus symbol on collapsed bar*/
       #tabs-newtab-button .toolbarbutton-text{
       position: relative !important;
@@ -613,7 +623,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           opacity: 100% !important;
         }
       }
-      .tabbrowser-tab:hover{
+      .tabbrowser-tab:hover:not([glance-id]){
         .tab-close-button {
           opacity: 100% !important;
         }
@@ -629,7 +639,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
           transform: translateX(19px) !important;
         }
       }
-      tab .tab-close-button{
+      tab:not([glance-id]) .tab-close-button{
         clip-path: inset(100% 0 0 0);
         transition: clip-path 0ms ease-in-out calc(var(--transition-delay) + var(--transition-duration)),
         opacity 150ms ease-in-out !important;
