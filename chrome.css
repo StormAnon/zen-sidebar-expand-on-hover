@@ -92,7 +92,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*Elements with smooth transitions that are animated*/
-        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]),
+        #navigator-toolbox, #tabbrowser-tabbox, tab:is([zen-essential]),
         #zen-workspaces-button, #zen-workspaces-button .subviewbutton, #zen-media-focus-button::after,
         .tab-label-container, #zen-sidebar-foot-buttons > *:not(#zen-workspaces-button),
         .tab-group-container, #tabbrowser-tabpanels{
@@ -122,7 +122,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*Elements with smooth transitions that are animated*/
-        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), tab:is([zen-essential]), .tab-group-container, #tabbrowser-tabpanels{
+        #navigator-toolbox, #tabbrowser-tabbox, tab:is([zen-essential]), .tab-group-container, #tabbrowser-tabpanels{
         transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -149,7 +149,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
 
         /*Elements with smooth transitions that are animated*/
-        #navigator-toolbox, #tabbrowser-tabbox, #urlbar:not([focused]), #tabbrowser-tabpanels{
+        #navigator-toolbox, #tabbrowser-tabbox, #tabbrowser-tabpanels{
         transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
         opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
@@ -244,9 +244,6 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #zen-media-focus-button::after {
         clip-path: inset(0px 0px 0px 0px);
         }
-        .tab-audio-button{
-          opacity: 100% !important;
-        }
         tab:is([zen-essential]){
           width: 100% !important;
         }
@@ -315,7 +312,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
       /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
       #zen-tabbox-wrapper {
-      filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
       }
 
       /*initial clip path state*/
@@ -327,6 +324,17 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #zen-appcontent-wrapper #tabbrowser-tabbox[zen-split-view="true"] #tabbrowser-tabpanels {
         clip-path: inset(-2px -2px -2px -2px round 5px);
         }
+      }
+
+      /*Protects the tab mute button from accidental clicks in the collapsed state*/
+      .tab-audio-button{
+        opacity: 0;
+      }
+      #navigator-toolbox:hover .tab-audio-button{
+      opacity: 1 !important;
+      }
+      #navigator-toolbox:hover .tab-audio-button {
+      animation: disable-pointer-events calc(var(--transition-delay-smooth) + var(--transition-duration) + 200ms);
       }
 
       /*Adds space for the tab icons*/
@@ -499,17 +507,13 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       transform: translateX(calc(var(--collapsed-tab-bar-width)/2 - 24px));
       }
 
-      /*fades audio button*/
-      .tab-audio-button{
-        opacity: 0% !important;
-      }
-
       /*Puts the url bar in the right place for the single toolbar mode, since we changed navigator-toolbox to position: absolute*/
       @media (-moz-bool-pref: "zen.view.use-single-toolbar") {
         #nav-bar{
         position: relative !important;
         }
       }
+
       /*adds relief for window buttons on a right-sided tab bar, and for the back button on the left tab bar*/
       @media not all and (-moz-bool-pref: "zen.view.use-single-toolbar") {
         /*#zen-main-app-wrapper[zen-compact-mode="false"]{*/
@@ -560,6 +564,16 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       #navigator-toolbox[zen-right-side="true"] #urlbar:not([focused=""]){
       clip-path: inset(0 0 0 calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 4px) round 10px) !important;
+      }
+      @media not (-moz-bool-pref: "zen.view.compact.enable-at-startup"),
+      (-moz-bool-pref: "zen.view.use-single-toolbar") {
+        #urlbar:not([focused]){
+        transition: clip-path var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        transform var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        opacity var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        width var(--transition-duration) ease-in-out var(--transition-delay-smooth),
+        max-height var(--transition-duration) ease var(--transition-delay-smooth) !important;
+        }
       }
 
       /*aligns pinned tab favicons*/
