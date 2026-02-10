@@ -285,14 +285,20 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         .tabbrowser-tab .tab-background{
           clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 19px) 0px 0px round 7px);
         }
+        .tab-content{
+          padding-left: 7.5px !important;
+        }
       }
       }
       #navigator-toolbox[zen-right-side="true"]{
       zen-folder .tab-group-container{
-        transform: translateX(14px);
+        transform: translateX(13px);
         padding-left: 17px;
         .tabbrowser-tab .tab-background{
           clip-path: inset(0px 0px 0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 19px) round 7px);
+        }
+        .tab-content{
+          padding-right: 7.5px !important;
         }
       }
       }
@@ -381,7 +387,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       /*Collapses split view tab group for square backgrounds on hover, during collapsed state*/
       @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
         tab:not([zen-essential], [split-view="true"]) .tab-background{
-          clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) 0px 0px round 6px);
+          clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) 0px 0px round 7px);
         }
         tab-group {
           clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 2px) 0px 0px round 10px);
@@ -389,7 +395,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       @media (-moz-bool-pref: "zen.tabs.vertical.right-side"){
         tab:not([zen-essential], [split-view="true"]) .tab-background{
-          clip-path: inset(0px 0px 0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) round 6px);
+          clip-path: inset(0px 0px 0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) round 7px);
         }
         tab-group {
           clip-path: inset(0px 0px 0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 2px) round 10px);
@@ -405,10 +411,13 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       #navigator-toolbox:not([zen-right-side="true"]){
       zen-folder .tab-group-label-container, tab:not([zen-essential]) .tab-content{
-        margin-left: calc(var(--collapsed-tab-bar-width)/2 - 23px) !important;
+        margin-left: calc(var(--collapsed-tab-bar-width)/2 - 22px) !important;
       }
       tab:not([zen-essential]) .tab-icon-image{
         margin-right: 9px !important;
+      }
+      .zen-workspace-tabs-section{
+        padding-left: 4.5px !important;
       }
       }
       #navigator-toolbox[zen-right-side="true"]{
@@ -420,6 +429,12 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       zen-folder .tab-group-folder-icon{
         margin-right: calc(3px) !important;
+      }
+      .zen-workspace-tabs-section{
+        padding-left: 4.5px !important;
+      }
+      tab:is([zen-essential]) .tab-icon-image{
+        margin-right: 3px !important;
       }
       }
 
@@ -458,7 +473,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       @media not (-moz-bool-pref: "zen.tabs.vertical.right-side"){
         #tabs-newtab-button{
         justify-content: start !important;
-        padding-left: calc(var(--collapsed-tab-bar-width)/2 - 15px) !important;
+        padding-left: calc(var(--collapsed-tab-bar-width)/2 - 14px) !important;
         clip-path: inset(0px calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px) 0px 0px round 7px);
         }
       }
