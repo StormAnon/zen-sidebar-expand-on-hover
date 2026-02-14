@@ -1,3 +1,9 @@
+@keyframes disable-pointer-events {
+  0%, 99% {
+    pointer-events: none;
+  }
+}
+
 /*Makes so that the mod works with compact mode in all it's forms, allowing the use of the mod with "hide top bar only"*/
 @media not (-moz-bool-pref: "zen.view.compact.enable-at-startup"),
   not (-moz-bool-pref: "zen.view.use-single-toolbar") {
