@@ -192,6 +192,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       z-index: -1 !important;
       height: 100%;
       min-width: 100px !important;
+      max-width: 4000px !important;
       width: var(--expanded-tab-bar-width) !important;
       --hover-width: 100px;
 
