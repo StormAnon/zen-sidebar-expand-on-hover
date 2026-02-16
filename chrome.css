@@ -282,6 +282,9 @@
 
           /*Folder items indentation, size and fading labels*/
           #navigator-toolbox:not([zen-right-side="true"]){
+            .tab-group-folder-icon{
+              margin-left: 1px;
+            }
             .tab-group-label{
               opacity: 0%;
             }
@@ -789,7 +792,7 @@
               }
               .tab-reset-pin-button{
                 position: absolute !important;
-                transform: translateX(13px);
+                transform: translateX(14px);
                 padding-right: 9px !important;
                 border-top-left-radius: 0px !important;
                 border-bottom-left-radius: 0px !important;
