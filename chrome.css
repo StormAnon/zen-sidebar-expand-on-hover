@@ -819,7 +819,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         opacity 150ms ease-in-out !important;
         position: absolute;
         left: 0;
-        display: flex !important;
+        display: flex;
         opacity: 0% !important;
         margin-left: 4px !important;
       }
@@ -909,7 +909,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       #navigator-toolbox:not([zen-right-side="true"]){
       tab:not([zen-essential], [zen-glance-tab="true"]){
         .tab-close-button{
-          display: flex !important;
+          display: flex;
           position: absolute !important;
           opacity: 0% !important;
           margin-right: 2px !important;
