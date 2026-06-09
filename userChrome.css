@@ -95,7 +95,7 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
 
         /*Adds dynamic drop shadow to this element that parents tabbrowser-tabbox so the shadow follows the web page with the clip path*/
         #zen-tabbox-wrapper {
-        filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
+        //filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
         }
 
         /*Elements with "Instant" transitions. These are delayed dynamically depending on if it's hover/unhover, and are never animated to improve performance.*/
