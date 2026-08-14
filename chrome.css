@@ -202,6 +202,16 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       }
       --my-width: calc(var(--collapsed-tab-bar-width) + 8px);
       --hide: calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 5px);
+      @media (-moz-platform: macos) {
+        &:not([zen-right-side="true"]) {
+          clip-path: none !important;
+          &:not(:is(:hover, [has-popup-menu="true"], [movingtab], [flash-popup], :has(#urlbar[open], toolbarbutton[open="true"]:not(#zen-sidepanel-button)))) {
+            > *:not(#zen-sidebar-top-buttons) {
+              clip-path: inset(0 var(--hide) 0 0);
+            }
+          }
+        }
+      }
       &:not([zen-right-side="true"]){
         clip-path: inset(0 var(--hide) 0 0);
         padding-right: 5px !important;
@@ -230,6 +240,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         clip-path: inset(0 0 0 0);
         --my-width: var(--expanded-tab-bar-width);
+        @media (-moz-platform: macos) {
+          &:not([zen-right-side="true"]) > *:not(#zen-sidebar-top-buttons) {
+            clip-path: inset(0 0 0 0);
+          }
+        }
         ~ #zen-appcontent-wrapper {
           z-index: 0 !important;
         }
@@ -295,6 +310,11 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
         .tab-group-label{
           opacity: 100%;
+        }
+        @media (-moz-platform: macos) {
+          &:not([zen-right-side="true"]) #zen-sidebar-top-buttons-customization-target {
+            margin-left: 0 !important;
+          }
         }
         zen-folder .tab-group-container{
           transform: translateX(0px);
@@ -618,6 +638,39 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
         }
       }
 
+      /*macOS: don't clip traffic lights with tabs; lay out top buttons in a row*/
+      @media (-moz-platform: macos) {
+        @media not (-moz-bool-pref: "zen.tabs.vertical.right-side") {
+          #navigator-toolbox:not([zen-right-side="true"]) {
+            #zen-sidebar-top-buttons {
+              position: relative;
+              z-index: 1001 !important;
+              overflow: visible;
+              width: max-content;
+              max-width: none;
+              padding-inline-start: 6px;
+              gap: 4px;
+              flex-wrap: nowrap;
+            }
+            .titlebar-buttonbox-container {
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              flex-shrink: 0;
+            }
+            #zen-sidebar-top-buttons-customization-target {
+              margin-left: 0 !important;
+              flex: 0 1 auto;
+              min-width: 0;
+              justify-content: flex-start;
+            }
+            #zen-toggle-compact-mode {
+              order: -4 !important;
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+
       /*collapses url bar when not hovered*/
       #navigator-toolbox:not([zen-right-side="true"]) #urlbar:not([focused=""]){
       clip-path: inset(0 calc(var(--expanded-tab-bar-width) - var(--collapsed-tab-bar-width) - 4px) 0 0 round calc(var(--os-radius) + 2px)) !important;
@@ -760,6 +813,13 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       order: 100 !important;
       }
       }
+      @media (-moz-platform: macos) {
+        @media not (-moz-bool-pref: "zen.tabs.vertical.right-side") {
+          #navigator-toolbox:not([zen-right-side="true"]) #zen-sidebar-top-buttons-customization-target {
+            margin-left: 0 !important;
+          }
+        }
+      }
       #navigator-toolbox:not(:is(
       :hover,
       [has-popup-menu=""],
@@ -769,6 +829,20 @@ not (-moz-bool-pref: "zen.view.use-single-toolbar") {
       )) {
         #zen-sidebar-top-buttons-customization-target > *:not(#back-button, #zen-toggle-compact-mode){
         opacity: 0 !important;
+        }
+      }
+      @media (-moz-platform: macos) {
+        @media not (-moz-bool-pref: "zen.tabs.vertical.right-side") {
+          #navigator-toolbox:not([zen-right-side="true"]):not(:is(
+            :hover,
+            [has-popup-menu="true"],
+            [movingtab],
+            [flash-popup],
+            :has(#urlbar[open], toolbarbutton[open="true"]:not(#zen-sidepanel-button))
+          )) #zen-sidebar-top-buttons-customization-target > *:not(#zen-toggle-compact-mode) {
+            opacity: 0 !important;
+            pointer-events: none !important;
+          }
         }
       }
 
